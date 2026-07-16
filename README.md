@@ -24,7 +24,7 @@ Built with **HTML**, **CSS**, and **JavaScript**.
 ## Run Locally
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/ProResume.git
+git clone https://github.com/helloayushhh/ProResume.git
 cd ProResume
 ```
 
