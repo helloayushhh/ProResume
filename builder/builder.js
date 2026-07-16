@@ -20,10 +20,22 @@ document.addEventListener('DOMContentLoaded', () => {
   const location = document.getElementById('location');
   const summary = document.getElementById('summary');
 
+  const linkGithub = document.getElementById('linkGithub');
+  const linkLinkedin = document.getElementById('linkLinkedin');
+  const linkPortfolio = document.getElementById('linkPortfolio');
+  const linkOther = document.getElementById('linkOther');
+
   const educationRows = document.getElementById('educationRows');
   const experienceRows = document.getElementById('experienceRows');
+  const projectRows = document.getElementById('projectRows');
+  const certificationRows = document.getElementById('certificationRows');
+  const achievementRows = document.getElementById('achievementRows');
+
   const educationTpl = document.getElementById('educationRowTpl');
   const experienceTpl = document.getElementById('experienceRowTpl');
+  const projectTpl = document.getElementById('projectRowTpl');
+  const certificationTpl = document.getElementById('certificationRowTpl');
+  const achievementTpl = document.getElementById('achievementRowTpl');
 
   const skillInput = document.getElementById('skillInput');
   const skillTagsEl = document.getElementById('skillTags');
@@ -35,15 +47,22 @@ document.addEventListener('DOMContentLoaded', () => {
   const pName = document.getElementById('pName');
   const pRole = document.getElementById('pRole');
   const pContact = document.getElementById('pContact');
+  const pLinks = document.getElementById('pLinks');
   const pSummary = document.getElementById('pSummary');
   const pEducation = document.getElementById('pEducation');
   const pSkills = document.getElementById('pSkills');
   const pExperience = document.getElementById('pExperience');
+  const pProjects = document.getElementById('pProjects');
+  const pCertifications = document.getElementById('pCertifications');
+  const pAchievements = document.getElementById('pAchievements');
 
   const blockSummary = document.getElementById('blockSummary');
   const blockEducation = document.getElementById('blockEducation');
   const blockSkills = document.getElementById('blockSkills');
   const blockExperience = document.getElementById('blockExperience');
+  const blockProjects = document.getElementById('blockProjects');
+  const blockCertifications = document.getElementById('blockCertifications');
+  const blockAchievements = document.getElementById('blockAchievements');
   const emptyState = document.getElementById('emptyState');
 
   /* ------------------------------------------------------------------ */
@@ -83,9 +102,27 @@ document.addEventListener('DOMContentLoaded', () => {
     updateAll();
   });
 
+  document.getElementById('addProject').addEventListener('click', () => {
+    addRow(projectRows, projectTpl, 'proj');
+    updateAll();
+  });
+
+  document.getElementById('addCertification').addEventListener('click', () => {
+    addRow(certificationRows, certificationTpl, 'cert');
+    updateAll();
+  });
+
+  document.getElementById('addAchievement').addEventListener('click', () => {
+    addRow(achievementRows, achievementTpl, 'ach');
+    updateAll();
+  });
+
   /* Seed one row of each so the form doesn't feel empty */
   addRow(educationRows, educationTpl, 'edu');
   addRow(experienceRows, experienceTpl, 'exp');
+  addRow(projectRows, projectTpl, 'proj');
+  addRow(certificationRows, certificationTpl, 'cert');
+  addRow(achievementRows, achievementTpl, 'ach');
 
   /* ------------------------------------------------------------------ */
   /* Skills / tag input                                                  */
@@ -139,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ------------------------------------------------------------------ */
   /* Personal fields listeners                                           */
   /* ------------------------------------------------------------------ */
-  [fullName, email, phone, location, summary].forEach(el => {
+  [fullName, email, phone, location, summary, linkGithub, linkLinkedin, linkPortfolio, linkOther].forEach(el => {
     el.addEventListener('input', updateAll);
   });
 
@@ -150,6 +187,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const div = document.createElement('div');
     div.textContent = str;
     return div.innerHTML;
+  }
+
+  function normalizeUrl(value) {
+    const v = value.trim();
+    if (!v) return '';
+    if (/^https?:\/\//i.test(v)) return v;
+    return `https://${v}`;
   }
 
   /* ------------------------------------------------------------------ */
@@ -190,6 +234,24 @@ document.addEventListener('DOMContentLoaded', () => {
       span.dataset.field = key;
       span.textContent = val;
       pContact.appendChild(span);
+    });
+
+    /* profile links */
+    pLinks.innerHTML = '';
+    [
+      ['GitHub', linkGithub.value],
+      ['LinkedIn', linkLinkedin.value],
+      ['Portfolio', linkPortfolio.value],
+      ['Link', linkOther.value]
+    ].forEach(([label, raw]) => {
+      const url = normalizeUrl(raw);
+      if (!url) return;
+      const a = document.createElement('a');
+      a.href = url;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.textContent = label;
+      pLinks.appendChild(a);
     });
 
     /* summary */
@@ -257,8 +319,71 @@ document.addEventListener('DOMContentLoaded', () => {
       blockExperience.hidden = true;
     }
 
+    /* projects */
+    const projectData = readRows(projectRows).filter(r => r.name);
+    pProjects.innerHTML = '';
+    if (projectData.length) {
+      projectData.forEach(p => {
+        const entry = document.createElement('div');
+        entry.className = 'resume-entry';
+        const url = normalizeUrl(p.link || '');
+        entry.innerHTML = `
+          <div class="resume-entry-top">
+            <div>
+              <div class="resume-entry-title">${escapeHtml(p.name)}</div>
+              <div class="resume-entry-sub">${escapeHtml(p.stack || '')}</div>
+            </div>
+            ${url ? `<a class="resume-entry-link" href="${url}" target="_blank" rel="noopener noreferrer">View</a>` : ''}
+          </div>
+          ${p.description ? `<div class="resume-entry-desc">${escapeHtml(p.description)}</div>` : ''}`;
+        pProjects.appendChild(entry);
+      });
+      blockProjects.hidden = false;
+    } else {
+      blockProjects.hidden = true;
+    }
+
+    /* certifications */
+    const certData = readRows(certificationRows).filter(r => r.name);
+    pCertifications.innerHTML = '';
+    if (certData.length) {
+      certData.forEach(c => {
+        const entry = document.createElement('div');
+        entry.className = 'resume-entry';
+        const url = normalizeUrl(c.link || '');
+        entry.innerHTML = `
+          <div class="resume-entry-top">
+            <div>
+              <div class="resume-entry-title">${escapeHtml(c.name)}</div>
+              <div class="resume-entry-sub">${escapeHtml(c.provider || '')}</div>
+            </div>
+            ${url ? `<a class="resume-entry-link" href="${url}" target="_blank" rel="noopener noreferrer">Verify</a>` : ''}
+          </div>`;
+        pCertifications.appendChild(entry);
+      });
+      blockCertifications.hidden = false;
+    } else {
+      blockCertifications.hidden = true;
+    }
+
+    /* achievements */
+    const achData = readRows(achievementRows).filter(r => r.text);
+    pAchievements.innerHTML = '';
+    if (achData.length) {
+      achData.forEach(a => {
+        const li = document.createElement('li');
+        li.textContent = a.text;
+        pAchievements.appendChild(li);
+      });
+      blockAchievements.hidden = false;
+    } else {
+      blockAchievements.hidden = true;
+    }
+
     /* empty state */
-    const hasAnything = name || emailVal || phoneVal || locVal || summaryVal || eduData.length || skills.length || expData.length;
+    const hasAnything = name || emailVal || phoneVal || locVal || summaryVal || eduData.length || skills.length || expData.length
+      || projectData.length || certData.length || achData.length || linkGithub.value.trim() || linkLinkedin.value.trim()
+      || linkPortfolio.value.trim() || linkOther.value.trim();
     emptyState.classList.toggle('hide', !!hasAnything);
   }
 
@@ -273,7 +398,10 @@ document.addEventListener('DOMContentLoaded', () => {
       !!summary.value.trim(),
       readRows(educationRows).some(r => r.school || r.degree),
       skills.length > 0,
-      readRows(experienceRows).some(r => r.company || r.role)
+      readRows(experienceRows).some(r => r.company || r.role),
+      readRows(projectRows).some(r => r.name),
+      readRows(certificationRows).some(r => r.name),
+      readRows(achievementRows).some(r => r.text)
     ];
     const done = checks.filter(Boolean).length;
     const pct = Math.round((done / checks.length) * 100);
@@ -296,12 +424,22 @@ document.addEventListener('DOMContentLoaded', () => {
     phone.value = '';
     location.value = '';
     summary.value = '';
+    linkGithub.value = '';
+    linkLinkedin.value = '';
+    linkPortfolio.value = '';
+    linkOther.value = '';
     educationRows.innerHTML = '';
     experienceRows.innerHTML = '';
+    projectRows.innerHTML = '';
+    certificationRows.innerHTML = '';
+    achievementRows.innerHTML = '';
     skills = [];
     renderSkillTags();
     addRow(educationRows, educationTpl, 'edu');
     addRow(experienceRows, experienceTpl, 'exp');
+    addRow(projectRows, projectTpl, 'proj');
+    addRow(certificationRows, certificationTpl, 'cert');
+    addRow(achievementRows, achievementTpl, 'ach');
     updateAll();
   });
 

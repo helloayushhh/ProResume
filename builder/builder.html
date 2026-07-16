@@ -41,45 +41,45 @@
         <p>Fill in the sections below — your resume updates instantly on the right.</p>
       </div>
 
-      <div class="field-grid">
-        <div class="field">
-          <label for="fullName">Full name</label>
-          <input type="text" id="fullName" placeholder="Ayush Pandey" autocomplete="name" />
-        </div>
-
-        <div class="field">
-          <label for="email">Email</label>
-          <input type="email" id="email" placeholder="you@email.com" autocomplete="email" />
-        </div>
-
-        <div class="field">
-          <label for="phone">Phone number</label>
-          <input type="tel" id="phone" placeholder="+91 98765 43210" autocomplete="tel" />
-        </div>
-
-        <div class="field">
-          <label for="location">Location</label>
-          <input type="text" id="location" placeholder="Greater Noida, India" />
-        </div>
-
-        <div class="field">
-          <label for="linkedin">LinkedIn</label>
-          <input type="url" id="linkedin" placeholder="https://linkedin.com/in/yourusername" autocomplete="url" />
-        </div>
-
-        <div class="field">
-          <label for="github">GitHub</label>
-          <input type="url" id="github" placeholder="https://github.com/yourusername" autocomplete="url" />
-        </div>
-
-        <div class="field">
-          <label for="portfolio">Portfolio</label>
-          <input type="url" id="portfolio" placeholder="https://yourportfolio.com" autocomplete="url" />
+      <!-- Personal info -->
+      <div class="form-section" data-section="personal">
+        <h2 class="form-section-title">Personal information</h2>
+        <div class="field-grid">
+          <div class="field">
+            <label for="fullName">Full name</label>
+            <input type="text" id="fullName" placeholder="Ayush Pandey" autocomplete="name" />
           </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="you@email.com" autocomplete="email" />
+          </div>
+          <div class="field">
+            <label for="phone">Phone number</label>
+            <input type="tel" id="phone" placeholder="+91 98765 43210" autocomplete="tel" />
+          </div>
+          <div class="field">
+            <label for="location">Location</label>
+            <input type="text" id="location" placeholder="Greater Noida, India" />
+          </div>
+        </div>
 
-        <div class="field">
-          <label for="website">Other Profile (Optional)</label>
-          <input type="url" id="website" placeholder="https://leetcode.com/username" autocomplete="url" />
+        <div class="field-grid" style="margin-top: 4px;">
+          <div class="field">
+            <label for="linkGithub">GitHub</label>
+            <input type="url" id="linkGithub" placeholder="github.com/username" />
+          </div>
+          <div class="field">
+            <label for="linkLinkedin">LinkedIn</label>
+            <input type="url" id="linkLinkedin" placeholder="linkedin.com/in/username" />
+          </div>
+          <div class="field">
+            <label for="linkPortfolio">Portfolio</label>
+            <input type="url" id="linkPortfolio" placeholder="yourname.dev" />
+          </div>
+          <div class="field">
+            <label for="linkOther">Other link</label>
+            <input type="url" id="linkOther" placeholder="Behance, Twitter, etc." />
+          </div>
         </div>
 
         <div class="field">
@@ -128,6 +128,39 @@
         <div class="dynamic-rows" id="experienceRows"></div>
       </div>
 
+      <!-- Projects -->
+      <div class="form-section" data-section="projects">
+        <div class="form-section-head">
+          <h2 class="form-section-title">Projects</h2>
+          <button type="button" class="btn-add" id="addProject">
+            <span class="plus-icon"></span> Add row
+          </button>
+        </div>
+        <div class="dynamic-rows" id="projectRows"></div>
+      </div>
+
+      <!-- Certifications -->
+      <div class="form-section" data-section="certifications">
+        <div class="form-section-head">
+          <h2 class="form-section-title">Certifications</h2>
+          <button type="button" class="btn-add" id="addCertification">
+            <span class="plus-icon"></span> Add row
+          </button>
+        </div>
+        <div class="dynamic-rows" id="certificationRows"></div>
+      </div>
+
+      <!-- Achievements -->
+      <div class="form-section" data-section="achievements">
+        <div class="form-section-head">
+          <h2 class="form-section-title">Achievements</h2>
+          <button type="button" class="btn-add" id="addAchievement">
+            <span class="plus-icon"></span> Add row
+          </button>
+        </div>
+        <div class="dynamic-rows" id="achievementRows"></div>
+      </div>
+
       <div class="form-actions">
         <button type="button" class="btn btn-ghost" id="clearForm">Clear form</button>
         <button type="button" class="btn btn-primary" id="downloadPdf">
@@ -153,6 +186,7 @@
             <span data-field="phone">+91 00000 00000</span>
             <span data-field="location">Your city</span>
           </div>
+          <div class="resume-links" id="pLinks"></div>
         </div>
 
         <div class="resume-block" id="blockSummary" hidden>
@@ -173,6 +207,21 @@
         <div class="resume-block" id="blockExperience" hidden>
           <h3 class="resume-heading">Experience</h3>
           <div id="pExperience" class="resume-list"></div>
+        </div>
+
+        <div class="resume-block" id="blockProjects" hidden>
+          <h3 class="resume-heading">Projects</h3>
+          <div id="pProjects" class="resume-list"></div>
+        </div>
+
+        <div class="resume-block" id="blockCertifications" hidden>
+          <h3 class="resume-heading">Certifications</h3>
+          <div id="pCertifications" class="resume-list"></div>
+        </div>
+
+        <div class="resume-block" id="blockAchievements" hidden>
+          <h3 class="resume-heading">Achievements</h3>
+          <ul id="pAchievements" class="resume-achievements"></ul>
         </div>
 
         <div class="resume-empty" id="emptyState">
@@ -230,6 +279,60 @@
     <div class="field">
       <label>Description</label>
       <textarea rows="2" data-key="description" placeholder="What you built, shipped, or improved."></textarea>
+    </div>
+  </div>
+</template>
+
+<template id="projectRowTpl">
+  <div class="dynamic-row" data-row>
+    <button type="button" class="row-remove" aria-label="Remove project row">&times;</button>
+    <div class="field-grid two">
+      <div class="field">
+        <label>Project name</label>
+        <input type="text" data-key="name" placeholder="SwiftUPI" />
+      </div>
+      <div class="field">
+        <label>Tech stack</label>
+        <input type="text" data-key="stack" placeholder="Java 17, Spring Boot, MySQL" />
+      </div>
+      <div class="field">
+        <label>Link (optional)</label>
+        <input type="url" data-key="link" placeholder="github.com/username/project" />
+      </div>
+    </div>
+    <div class="field">
+      <label>Description</label>
+      <textarea rows="2" data-key="description" placeholder="What the project does and what you built."></textarea>
+    </div>
+  </div>
+</template>
+
+<template id="certificationRowTpl">
+  <div class="dynamic-row" data-row>
+    <button type="button" class="row-remove" aria-label="Remove certification row">&times;</button>
+    <div class="field-grid two">
+      <div class="field">
+        <label>Certification name</label>
+        <input type="text" data-key="name" placeholder="AWS Certified Cloud Practitioner" />
+      </div>
+      <div class="field">
+        <label>Issued by</label>
+        <input type="text" data-key="provider" placeholder="Amazon Web Services" />
+      </div>
+      <div class="field">
+        <label>Link (optional)</label>
+        <input type="url" data-key="link" placeholder="credential URL" />
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="achievementRowTpl">
+  <div class="dynamic-row dynamic-row-compact" data-row>
+    <button type="button" class="row-remove" aria-label="Remove achievement row">&times;</button>
+    <div class="field">
+      <label>Achievement</label>
+      <input type="text" data-key="text" placeholder="Top 10 of 500+ teams at a national hackathon" />
     </div>
   </div>
 </template>

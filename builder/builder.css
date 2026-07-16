@@ -184,6 +184,10 @@
   to{ opacity: 1; transform: translateY(0) scale(1); }
 }
 .dynamic-row .field{ margin-bottom: 16px; }
+.dynamic-row-compact{ padding: 14px 44px 14px 20px; }
+.dynamic-row-compact .field{ margin-bottom: 0; }
+.dynamic-row-compact .row-remove{ top: 50%; transform: translateY(-50%); }
+.dynamic-row-compact .row-remove:hover{ transform: translateY(-50%) rotate(90deg); }
 .row-remove{
   position: absolute;
   top: 12px; right: 12px;
@@ -310,6 +314,21 @@
 .resume-contact span{ position: relative; padding-left: 0; }
 .resume-contact span::after{ content: ''; }
 
+.resume-links{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin-top: 6px;
+  font-size: 13px;
+}
+.resume-links a{
+  color: var(--text);
+  font-weight: 600;
+  border-bottom: 1px solid var(--border);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.resume-links a:hover{ border-color: var(--text); }
+
 .resume-block{
   margin-bottom: 24px;
   animation: fadeSlide 0.45s cubic-bezier(.2,.8,.2,1);
@@ -343,6 +362,28 @@
 .resume-entry-sub{ font-size: 13.5px; color: var(--text-soft); margin-top: 1px; }
 .resume-entry-meta{ font-size: 12.5px; color: var(--text-soft); font-weight: 500; white-space: nowrap; }
 .resume-entry-desc{ font-size: 13.5px; color: var(--text-soft); line-height: 1.6; margin-top: 6px; }
+.resume-entry-link{
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+  transition: border-color 0.2s ease;
+}
+.resume-entry-link:hover{ border-color: var(--text); }
+
+.resume-achievements{
+  margin: 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.resume-achievements li{
+  font-size: 13.5px;
+  color: var(--text);
+  line-height: 1.5;
+  animation: fadeSlide 0.4s ease;
+}
 
 .resume-skill-chips{ display: flex; flex-wrap: wrap; gap: 8px; }
 .resume-skill-chip{
