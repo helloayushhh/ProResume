@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ProResume</title>
+<meta name="description" content="Create ATS-friendly resumes and personalized cover letters in minutes." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="cursor-glow" id="cursorGlow"></div>
+<div class="page-loader" id="pageLoader"><div class="loader-mark">R</div></div>
+
+<!-- NAVBAR -->
+<header class="nav-wrap">
+  <nav class="navbar" id="navbar">
+    <div class="nav-logo">
+      <span class="logo-mark">R</span>
+      <span class="logo-text">ProResume</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#templates">Templates</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#examples">Examples</a></li>
+      <li><a href="#resources">Resources</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="#" class="link-btn">Sign In</a>
+      <a href="builder/builder.html" class="btn btn-primary btn-sm">Start Building</a>
+    </div>
+    <button class="nav-burger" id="navBurger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#features">Features</a>
+    <a href="#templates">Templates</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#examples">Examples</a>
+    <a href="#resources">Resources</a>
+    <a href="builder/builder.html" class="btn btn-primary btn-sm">Start Building</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="container hero-grid">
+    <div class="hero-copy" data-reveal="left">
+      <div class="badge">
+        <span class="badge-dot"></span>
+        Trusted by 50,000+ Job Seekers
+      </div>
+      <h1 class="hero-title">Build resumes recruiters actually read.</h1>
+      <p class="hero-sub">Create ATS-friendly resumes and personalized cover letters in minutes with AI-powered writing assistance.</p>
+      <div class="hero-actions">
+        <a href="builder/builder.html" class="btn btn-primary btn-lg" id="btnBuild">
+          <span>Build Resume</span>
+        </a>
+        <a href="#" class="btn btn-ghost btn-lg" id="btnDemo">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M5 3.5L12.5 8L5 12.5V3.5Z" fill="currentColor"/></svg>
+          <span>Watch Demo</span>
+        </a>
+      </div>
+      <div class="hero-proof">
+        <div class="proof-item">
+          <span class="stars">★★★★★</span>
+          <span class="proof-num">4.9</span>
+        </div>
+        <span class="proof-divider"></span>
+        <div class="proof-item"><span class="counter" data-target="10">0</span><span>k+ users</span></div>
+        <span class="proof-divider"></span>
+        <div class="proof-item"><span class="counter" data-target="98">0</span><span>% interview success</span></div>
+      </div>
+    </div>
+
+    <div class="hero-visual" data-reveal="right">
+      <div class="dash-stage">
+
+        <div class="dash-card dash-main" id="dashMain">
+          <div class="dash-main-tabs">
+            <span class="tab active">Resume</span>
+            <span class="tab">Cover Letter</span>
+          </div>
+          <div class="dash-doc">
+            <div class="doc-line doc-name"></div>
+            <div class="doc-line doc-role"></div>
+            <div class="doc-block">
+              <div class="doc-line w-90"></div>
+              <div class="doc-line w-75"></div>
+              <div class="doc-line w-85"></div>
+            </div>
+            <div class="doc-block">
+              <div class="doc-line w-60 accent-line"></div>
+              <div class="doc-line w-95"></div>
+              <div class="doc-line w-70"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dash-card dash-float dash-ats" id="dashAts">
+          <div class="ring" style="--val:92">
+            <svg viewBox="0 0 40 40"><circle class="ring-track" cx="20" cy="20" r="17"></circle><circle class="ring-val" cx="20" cy="20" r="17"></circle></svg>
+            <span class="ring-num">92</span>
+          </div>
+          <div class="ats-copy">
+            <span class="ats-title">ATS Score</span>
+            <span class="ats-sub">Excellent match</span>
+          </div>
+        </div>
+
+        <div class="dash-card dash-float dash-suggest" id="dashSuggest">
+          <span class="pill-label">AI Suggestion</span>
+          <p>Add a measurable outcome to your last role for stronger impact.</p>
+        </div>
+
+        <div class="dash-card dash-float dash-template" id="dashTemplate">
+          <span class="pill-label">Template</span>
+          <div class="tpl-swatches">
+            <span class="swatch active"></span>
+            <span class="swatch"></span>
+            <span class="swatch"></span>
+          </div>
+        </div>
+
+        <div class="dash-card dash-float dash-export" id="dashExport">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1V9M7 9L4 6M7 9L10 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 11V12C2 12.5523 2.44772 13 3 13H11C11.5523 13 12 12.5523 12 12V11" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          Export PDF
+        </div>
+
+        <div class="badge-float badge-1">Downloaded</div>
+        <div class="badge-float badge-2">AI Enhanced</div>
+        <div class="badge-float badge-3">Interview Ready</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUSTED -->
+<section class="trusted">
+  <div class="container">
+    <p class="trusted-label">Trusted by candidates who joined teams at</p>
+    <div class="logo-strip">
+      <span>Northwind</span>
+      <span>Vellex</span>
+      <span>Orbital</span>
+      <span>Cascade</span>
+      <span>Halcyon</span>
+      <span>Fenwick</span>
+      <span>Marrow</span>
+      <span>Astra Labs</span>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="container">
+    <div class="section-head" data-reveal="up">
+      <span class="eyebrow">Features</span>
+      <h2>Everything a job search needs, quietly automated.</h2>
+      <p>One workspace that writes, checks, and packages your application — so you spend the saved time on interviews.</p>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-card" data-reveal="up">
+        <div class="f-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2L11.8 7.4L17 9.2L11.8 11L10 16.4L8.2 11L3 9.2L8.2 7.4L10 2Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg></div>
+        <h3>AI Resume Builder</h3>
+        <p>Turn raw experience into recruiter-ready bullet points in your own voice.</p>
+      </div>
+      <div class="feature-card" data-reveal="up">
+        <div class="f-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="3" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M6 8H14M6 11H11" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+        <h3>AI Cover Letter Generator</h3>
+        <p>Tailored letters that reference the actual role, not a generic template.</p>
+      </div>
+      <div class="feature-card" data-reveal="up">
+        <div class="f-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10L8 14L16 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>ATS Optimization</h3>
+        <p>Formatting and keywords checked against real applicant tracking systems.</p>
+      </div>
+      <div class="feature-card" data-reveal="up">
+        <div class="f-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 3V13M10 13L6 9M10 13L14 9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 15V16C4 16.55 4.45 17 5 17H15C15.55 17 16 16.55 16 16V15" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+        <h3>One Click Export</h3>
+        <p>Pixel-perfect PDF or DOCX, ready to attach in a single click.</p>
+      </div>
+      <div class="feature-card" data-reveal="up">
+        <div class="f-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="6.5" stroke="currentColor" stroke-width="1.3"/><path d="M10 6.5V10L12.3 11.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+        <h3>Job Matching</h3>
+        <p>See how closely your resume aligns with a posting before you apply.</p>
+      </div>
+      <div class="feature-card" data-reveal="up">
+        <div class="f-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 16V11M10 16V4M16 16V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+        <h3>Resume Analytics</h3>
+        <p>Track views, opens, and which version of your resume performs best.</p>
+      </div>
+      <div class="feature-card" data-reveal="up">
+        <div class="f-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 4H15V16L10 13.5L5 16V4Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg></div>
+        <h3>Version History</h3>
+        <p>Every edit saved automatically, so you can roll back with confidence.</p>
+      </div>
+      <div class="feature-card" data-reveal="up">
+        <div class="f-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 10C3 10 5.5 5 10 5C14.5 5 17 10 17 10C17 10 14.5 15 10 15C5.5 15 3 10 3 10Z" stroke="currentColor" stroke-width="1.3"/><circle cx="10" cy="10" r="2" stroke="currentColor" stroke-width="1.3"/></svg></div>
+        <h3>Smart Suggestions</h3>
+        <p>Line-by-line tone, grammar, and clarity feedback as you write.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUILDER PREVIEW -->
+<section class="builder" id="examples">
+  <div class="container">
+    <div class="section-head" data-reveal="up">
+      <span class="eyebrow">Inside the editor</span>
+      <h2>A workspace built for one document, done properly.</h2>
+    </div>
+    <div class="builder-frame" data-reveal="up">
+      <div class="builder-sidebar">
+        <div class="side-item active">Templates</div>
+        <div class="side-item">Experience</div>
+        <div class="side-item">Skills</div>
+        <div class="side-item">Projects</div>
+        <div class="side-item">Education</div>
+      </div>
+      <div class="builder-editor">
+        <div class="editor-toolbar">
+          <span class="toolbar-dot"></span><span class="toolbar-dot"></span><span class="toolbar-dot"></span>
+        </div>
+        <div class="editor-doc">
+          <div class="doc-line doc-name"></div>
+          <div class="doc-line doc-role"></div>
+          <div class="doc-line w-95"></div>
+          <div class="doc-line w-80"></div>
+          <div class="doc-line w-90 highlight-edit"></div>
+          <div class="doc-line w-60"></div>
+        </div>
+      </div>
+      <div class="builder-assistant">
+        <div class="assist-block">
+          <span class="pill-label">ATS Score</span>
+          <div class="assist-score">92<span>/100</span></div>
+        </div>
+        <div class="assist-block">
+          <span class="pill-label">Grammar</span>
+          <p class="assist-text">2 refinements suggested</p>
+        </div>
+        <div class="assist-block">
+          <span class="pill-label">Tone</span>
+          <p class="assist-text">Confident, concise</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEMPLATES -->
+<section class="templates" id="templates">
+  <div class="container">
+    <div class="section-head" data-reveal="up">
+      <span class="eyebrow">Templates</span>
+      <h2>Five styles, every one interview-tested.</h2>
+    </div>
+    <div class="template-grid">
+      <div class="template-card" data-reveal="up">
+        <div class="tpl-thumb tpl-corporate"></div>
+        <div class="tpl-meta"><span>Corporate</span><a href="#" class="tpl-preview">Preview</a></div>
+      </div>
+      <div class="template-card" data-reveal="up">
+        <div class="tpl-thumb tpl-minimal"></div>
+        <div class="tpl-meta"><span>Minimal</span><a href="#" class="tpl-preview">Preview</a></div>
+      </div>
+      <div class="template-card" data-reveal="up">
+        <div class="tpl-thumb tpl-creative"></div>
+        <div class="tpl-meta"><span>Creative</span><a href="#" class="tpl-preview">Preview</a></div>
+      </div>
+      <div class="template-card" data-reveal="up">
+        <div class="tpl-thumb tpl-executive"></div>
+        <div class="tpl-meta"><span>Executive</span><a href="#" class="tpl-preview">Preview</a></div>
+      </div>
+      <div class="template-card" data-reveal="up">
+        <div class="tpl-thumb tpl-modern"></div>
+        <div class="tpl-meta"><span>Modern</span><a href="#" class="tpl-preview">Preview</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="container">
+    <div class="section-head" data-reveal="up">
+      <span class="eyebrow">Process</span>
+      <h2>From blank page to sent, in four steps.</h2>
+    </div>
+    <div class="process-row" data-reveal="up">
+      <div class="process-line"></div>
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <h3>Choose Template</h3>
+        <p>Pick a layout suited to your industry and seniority.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <h3>Fill Details</h3>
+        <p>Add experience once — reuse it across every application.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <h3>AI Improves</h3>
+        <p>Get line edits for clarity, tone, and keyword coverage.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <h3>Download Resume</h3>
+        <p>Export a polished PDF, ready to send.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-head" data-reveal="up">
+      <span class="eyebrow">Testimonials</span>
+      <h2>What candidates say after they land the offer.</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card" data-reveal="up">
+        <div class="testi-stars">★★★★★</div>
+        <p>"Rewrote three years of scattered experience into a page that finally made sense. Three interviews in the first week."</p>
+        <div class="testi-person"><span class="avatar">SM</span><div><strong>Sara Mitchell</strong><span>Product Designer</span></div></div>
+      </div>
+      <div class="testi-card" data-reveal="up">
+        <div class="testi-stars">★★★★★</div>
+        <p>"The ATS score caught formatting issues I'd never have noticed. My callback rate genuinely doubled."</p>
+        <div class="testi-person"><span class="avatar">DK</span><div><strong>David Kwan</strong><span>Data Analyst</span></div></div>
+      </div>
+      <div class="testi-card" data-reveal="up">
+        <div class="testi-stars">★★★★★</div>
+        <p>"Cover letters used to take me an hour each. Now it's minutes, and they read like I actually wrote them."</p>
+        <div class="testi-person"><span class="avatar">PA</span><div><strong>Priya Anand</strong><span>Marketing Lead</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="section-head" data-reveal="up">
+      <span class="eyebrow">Pricing</span>
+      <h2>Start free. Upgrade when it's working.</h2>
+    </div>
+    <div class="pricing-grid" data-reveal="up">
+      <div class="price-card">
+        <span class="plan-name">Free</span>
+        <div class="plan-price">$0<span>/mo</span></div>
+        <p class="plan-desc">For your first polished resume.</p>
+        <ul class="plan-list">
+          <li>1 resume</li>
+          <li>3 templates</li>
+          <li>Basic ATS check</li>
+          <li>PDF export</li>
+        </ul>
+        <a href="#" class="btn btn-ghost btn-block">Start Free</a>
+      </div>
+      <div class="price-card featured">
+        <span class="plan-badge">Most Popular</span>
+        <span class="plan-name">Pro</span>
+        <div class="plan-price">$16<span>/mo</span></div>
+        <p class="plan-desc">For an active job search.</p>
+        <ul class="plan-list">
+          <li>Unlimited resumes</li>
+          <li>All templates</li>
+          <li>Full ATS + job matching</li>
+          <li>AI cover letters</li>
+          <li>Version history</li>
+        </ul>
+        <a href="#" class="btn btn-primary btn-block">Get Pro</a>
+      </div>
+      <div class="price-card">
+        <span class="plan-name">Team</span>
+        <div class="plan-price">$49<span>/mo</span></div>
+        <p class="plan-desc">For career centers and coaches.</p>
+        <ul class="plan-list">
+          <li>Everything in Pro</li>
+          <li>Shared workspace</li>
+          <li>Candidate analytics</li>
+          <li>Priority support</li>
+        </ul>
+        <a href="#" class="btn btn-ghost btn-block">Contact Sales</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="resources">
+  <div class="container container-narrow">
+    <div class="section-head" data-reveal="up">
+      <span class="eyebrow">FAQ</span>
+      <h2>Good to know.</h2>
+    </div>
+    <div class="faq-list" data-reveal="up">
+      <div class="faq-item">
+        <button class="faq-q">
+          <span>Will my resume actually pass ATS software?</span>
+          <span class="faq-plus"></span>
+        </button>
+        <div class="faq-a"><p>Every template is tested against the major applicant tracking systems, and the editor flags formatting that could break parsing before you export.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          <span>Can I cancel my Pro plan anytime?</span>
+          <span class="faq-plus"></span>
+        </button>
+        <div class="faq-a"><p>Yes. Cancel from your account settings at any point — you'll keep Pro access until the end of the billing period.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          <span>Do you offer a student discount?</span>
+          <span class="faq-plus"></span>
+        </button>
+        <div class="faq-a"><p>Students and recent graduates get 40% off Pro with a valid .edu email — apply the code at checkout.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          <span>What file formats can I export?</span>
+          <span class="faq-plus"></span>
+        </button>
+        <div class="faq-a"><p>PDF and DOCX are both supported, with formatting preserved exactly as shown in the editor.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="container">
+    <div class="cta-box" data-reveal="up">
+      <h2>Ready to land your next opportunity?</h2>
+      <p>Build your professional resume today.</p>
+      <a href="#" class="btn btn-primary btn-lg">Start Free</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <div class="nav-logo"><span class="logo-mark">R</span><span class="logo-text">ProResume</span></div>
+      <p>AI-assisted resumes and cover letters, built for humans who read them.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Product</h4>
+      <a href="#features">Features</a>
+      <a href="#templates">Templates</a>
+      <a href="#pricing">Pricing</a>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <a href="#">Resume guides</a>
+      <a href="#">Interview prep</a>
+      <a href="#">Blog</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#">About</a>
+      <a href="#">Careers</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="footer-social">
+      <h4>Follow</h4>
+      <div class="social-icons">
+        <a href="#" aria-label="X"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M9.6 6.9L15 1h-1.3l-4.6 5.1L5.4 1H1l5.6 8.1L1 15h1.3l4.9-5.4L11.4 15H16L9.6 6.9z"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M3.5 5.5H1V15h2.5V5.5zM2.25 4.4a1.4 1.4 0 100-2.8 1.4 1.4 0 000 2.8zM15 9.6c0-2.7-1.5-4-3.4-4-1.3 0-2 .7-2.4 1.3V5.5H6.7V15h2.5V9.9c0-1.2.7-1.9 1.7-1.9 1 0 1.6.7 1.6 1.9V15H15V9.6z"/></svg></a>
+        <a href="#" aria-label="GitHub"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 00-2.5 15.6c.4.1.5-.2.5-.4v-1.5c-2.2.5-2.7-1-2.7-1-.4-.9-.9-1.2-.9-1.2-.7-.5.1-.5.1-.5.8.1 1.2.8 1.2.8.7 1.2 1.9.9 2.3.7.1-.5.3-.9.5-1.1-1.8-.2-3.6-.9-3.6-4a3 3 0 01.8-2.2c-.1-.2-.4-1.1.1-2.3 0 0 .7-.2 2.2.8a7.7 7.7 0 014 0c1.5-1 2.2-.8 2.2-.8.4 1.2.2 2.1.1 2.3.5.6.8 1.3.8 2.2 0 3.1-1.9 3.8-3.6 4 .3.3.6.8.6 1.6v2.4c0 .2.1.5.6.4A8 8 0 008 0z"/></svg></a>
+      </div>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 ProResume. All rights reserved.</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
