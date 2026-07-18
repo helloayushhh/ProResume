@@ -1,56 +1,66 @@
-# ProResume
+# proresume
 
-A modern resume & cover letter builder that helps users create ATS-friendly resumes with a live preview and one-click PDF export.
+build resumes that look good and get through ats.
 
-Built with **HTML**, **CSS**, and **JavaScript**.
+a simple resume builder with live preview, cover letter support and one-click pdf export.
 
-## Features
+---
 
-- Live resume preview
-- ATS-friendly templates
-- Cover letter builder
-- Dynamic sections (Experience, Education, Projects, Skills)
-- PDF export
-- Responsive design
-- No backend required
+## why i built this
 
-## Tech Stack
+i wanted to build a resume builder that feels simple, fast and actually useful. no signup, no unnecessary steps, just start building.
 
-- HTML5
-- CSS3
-- JavaScript
+it was also a great opportunity to improve my frontend skills by working with dynamic forms, live rendering and pdf generation.
+
+---
+
+## features
+
+- live resume preview
+- ats-friendly layout
+- cover letter builder
+- dynamic resume sections
+- one-click pdf export
+- responsive design
+
+---
+
+## built with
+
+- html
+- css
+- javascript
 - html2pdf.js
 
-## Run Locally
+---
+
+## run locally
 
 ```bash
 git clone https://github.com/helloayushhh/ProResume.git
 cd ProResume
 ```
 
-Open `index.html` or run a local server.
-
-## Project Structure
-
-```
-ProResume/
-├── index.html
-├── style.css
-├── script.js
-└── builder/
-    ├── builder.html
-    ├── builder.css
-    └── builder.js
-```
-
-## Author
-
-**Ayush Pandey**
-
-- Portfolio: https://helloayush.vercel.app
-- LinkedIn: https://linkedin.com/in/ayushpandeysurya
-- GitHub: https://github.com/helloayushhh
+open `index.html`
 
 ---
 
-Designed and built as part of my **Web Development Internship**.
+## what i learned
+
+- building dynamic ui with vanilla javascript
+- handling real-time data updates
+- generating clean pdfs in the browser
+- designing for usability instead of complexity
+
+---
+
+## what's next
+
+- multiple resume themes
+- dark mode
+- import existing resume
+- cloud sync
+
+---
+
+built during my web development internship.
