@@ -62,5 +62,6 @@ open `index.html`
 - cloud sync
 
 ---
+see you in the next build.
 
-built during my web development internship.
+— aps
